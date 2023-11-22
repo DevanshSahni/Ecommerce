@@ -1,0 +1,24 @@
+.explore{
+  padding: 50px;
+}
+.exploreSearchBar{
+  width: 25%;
+  min-width: 200px;
+  height: 20px;
+  border: 1px solid black;
+  margin: auto;
+  border-radius: 5px;
+  position: relative;
+  cursor: text;
+  padding: 5px;
+}
+
+.exploreSearchBarIcon{
+  position: absolute;
+  right: 5px;
+  padding: 2px;
+}
+
+.exploreSearchBar input{
+  all: unset;
+}

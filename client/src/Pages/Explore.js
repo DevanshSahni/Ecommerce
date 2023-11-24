@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "../CSS/explore.css";
-import data from "../data.json";
-import Product from "../Components/Product";
+import originalData from "../data.json";
+import Preview from "../Components/Preview";
 import { BsThreeDotsVertical, BsSearch } from "react-icons/bs";
-import { FaSortAmountUpAlt, FaSortAmountUp } from "react-icons/fa";
+import { FaSortAmountUpAlt, FaStar, FaSortAmountUp } from "react-icons/fa";
 
 const Explore = () => {
   const [open, setOpen] = useState(false);
+  const [data, setData] = useState([...originalData]);
+  const [query, setQuery] = useState("");
 
   const inc = () => {
     data.sort((a, b) => a.price - b.price);
@@ -16,11 +18,24 @@ const Explore = () => {
     data.sort((b, a) => a.price - b.price);
     setOpen(!open);
   };
+  const pop = () => {
+    setData([...originalData]);
+    setOpen(!open);
+  };
+
+  const searchArtwork = (e) => {
+    setQuery(e.target.value);
+    const ImediateQuery = e.target.value;
+    const updatedData = [...originalData].filter((product) =>
+      product.name.toLowerCase().includes(ImediateQuery.toLowerCase())
+    );
+    setData(updatedData);
+  };
 
   return (
     <div className="explore">
       <div className="exploreSearchBar">
-        <input type="text" />
+        <input type="text" value={query} onChange={searchArtwork} />
         <BsSearch className="exploreSearchBarIcon" />
       </div>
 
@@ -39,15 +54,18 @@ const Explore = () => {
         <h6 onClick={inc}>
           <FaSortAmountUp /> Sort by price
         </h6>
+        <h6 onClick={pop}>
+          <FaStar /> Sort by popularity
+        </h6>
       </div>
 
       <div className="exploreArtworks">
         {data.map((product, idx) => (
-          <Product
+          <Preview
             key={idx}
             name={product.name}
             price={product.price}
-            artist={product.Artist}
+            artist={product.artist}
             image={product.imageSrc}
           />
         ))}

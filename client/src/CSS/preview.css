@@ -1,0 +1,32 @@
+.preview{
+  width: 250px;
+  min-height: 200px;
+  text-align: center;
+  padding: 25px;
+  margin: auto;
+}
+a{
+  all: unset;
+  cursor: pointer;
+}
+
+.previewImage{
+  width: 250px;
+  height: 315px; 
+  display: flex;
+  align-items: center;
+  background-color: #ffffff63;  
+}
+
+.previewImage img{
+  width: 250px;
+  object-fit: cover;
+}
+
+.previewDetails{
+  text-align: left;
+}
+
+.previewDetails h5,h6{
+  margin: 2px;
+}

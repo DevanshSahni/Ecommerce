@@ -42,7 +42,7 @@
 
 /* Filter */
 .filterContainer{
-  width: 100px;
+  width: fit-content;
   background-color: rgba(255, 255, 255, 0.651);
   position: absolute;
   right: min(10%,130px);

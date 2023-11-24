@@ -1,17 +1,17 @@
 import React from "react";
-import "../CSS/product.css";
+import "../CSS/preview.css";
 import { Link } from "react-router-dom";
 import { BiRupee } from "react-icons/bi";
 
-const Product = ({ name, image, price, artist }) => {
+const Preview = ({ name, image, price, artist }) => {
   return (
     
-    <div className="product">
+    <div className="preview">
       <Link to={`/product/${name}`}>
-      <div className="productImage">
-        <img src={image} alt="product" />
+      <div className="previewImage">
+        <img src={image} alt="Product preview" />
       </div>
-      <span className="productDetails">
+      <span className="previewDetails">
         <h5>Name: {name}</h5>
         <h6>Price: <BiRupee/>{price}</h6>
         <h6>Artist: {artist}</h6>
@@ -22,4 +22,4 @@ const Product = ({ name, image, price, artist }) => {
   );
 };
 
-export default Product;
+export default Preview;

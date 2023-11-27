@@ -1,0 +1,109 @@
+.cart{
+  margin: 150px;
+  position: relative;
+}
+
+.cartHeading{
+  color: #3498db;
+  padding-bottom: 20px;
+}
+
+.cartProduct{
+  display: flex;
+  justify-content: space-around;
+  margin: 50px 0 0;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.093);
+  padding-bottom: 50px;
+  border-radius: 3px;
+  position: relative;
+}
+
+.cartProductHeading{
+  border-bottom: 3px solid rgba(0, 0, 0, 0.266);
+  margin: 20px 0;
+  padding: 20px 0;
+}
+.cartProductHeading h3{
+  font-size: 18px;
+}
+.cartProductHeadingImage{
+  text-align: center;
+  width: 200px;
+}
+
+.cartProductName{
+  width: 200px;
+}
+.cartProductQuantity{
+  width: 100px;
+  height: fit-content;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cartProductPrice{
+  width: 100px;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+h3{
+  font-size: 16px;
+  margin: 0;
+}
+.cartProductImage{
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+.cartProductArtist{
+  width: 200px;
+}
+.cartProductQuantityIcons{
+  cursor: pointer;
+  font-size: 18px;
+  padding: 1px;
+}
+
+.cartProduct:nth-last-child(2){
+  border-bottom: 3px solid rgba(0, 0, 0, 0.266);
+}
+
+.cartProductCancelIcon{
+  position: absolute;
+  right: 100px;
+  bottom: 75px;
+  font-size: 25px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+
+.cartFooter{
+  position: absolute;
+  right: 50px;
+  padding: 50px 0 100px;
+}
+
+.cartFooterAmount{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.cartFooterCheckoutIcon {
+  width: 200px;
+  height: 50px;
+  background-color: #2ecc71;
+  border-radius: 20px;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+

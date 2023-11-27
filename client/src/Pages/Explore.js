@@ -25,9 +25,11 @@ const Explore = () => {
 
   const searchArtwork = (e) => {
     setQuery(e.target.value);
-    const ImediateQuery = e.target.value;
-    const updatedData = [...originalData].filter((product) =>
-      product.name.toLowerCase().includes(ImediateQuery.toLowerCase())
+    const ImmediateQuery = e.target.value;
+    const updatedData = [...originalData].filter(
+      (product) =>
+        product.name.toLowerCase().includes(ImmediateQuery.toLowerCase()) ||
+        product.artist.toLowerCase().includes(ImmediateQuery.toLowerCase())
     );
     setData(updatedData);
   };

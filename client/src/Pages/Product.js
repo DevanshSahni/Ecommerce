@@ -4,7 +4,7 @@ import data from "../data.json";
 import "../CSS/product.css";
 import { GrCart } from "react-icons/gr";
 import { BiRupee } from "react-icons/bi";
-import { CiCirclePlus, CiCircleMinus } from "react-icons/ci";
+import { CiSquarePlus, CiSquareMinus } from "react-icons/ci";
 
 const Product = () => {
   const { productID } = useParams();
@@ -24,13 +24,13 @@ const Product = () => {
       <div className="productDetails">
         <h2>Name: {productInfo.name}</h2>
         <h2 className="productDetailsPrice">
-          Price: <BiRupee />
+          Price:&nbsp;<BiRupee />
           {productInfo.price}
         </h2>
         <h2>Artist: {productInfo.artist} </h2>
         <h2 className="productDetailsQuantity">
           Quantity: &nbsp;
-          <CiCircleMinus
+          <CiSquareMinus
             className="productDetailsQuantityIcons"
             onClick={() => {
               if (units > 1) setUnits(units - 1);
@@ -38,7 +38,7 @@ const Product = () => {
           />
           &nbsp;
           {units} &nbsp;
-          <CiCirclePlus
+          <CiSquarePlus
             className="productDetailsQuantityIcons"
             onClick={() => {
               setUnits(units + 1);

@@ -1,0 +1,63 @@
+.newAddress{
+  margin: 150px;
+}
+
+.newAddressHeading{
+  color: #3498d8;
+  border-bottom: 2px solid #33333332;
+  padding-bottom: 30px;
+  margin-bottom: 50px;
+}
+
+.newAddressInputDetails{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px 0;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+}
+.newAddressInput{
+  height: 30px;
+  background-color: #bdc3c74a;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 20px;
+  outline: rgb(0, 0, 0);
+  width: 40%;
+  min-width: 200px;
+}
+
+.newAddressStreet{
+  width: 100%;
+}
+
+.newAddressLocation{
+  display: flex;  
+  align-items: center;
+  gap: 25px;
+  height: 50px;
+}
+.newAddressLocationHeading{
+  margin-right: 30px;
+}
+
+.newAddressInputOtherLocation:disabled{
+  display: none;
+}
+
+
+.newAddressFooter{
+  width: 100%;
+  text-align: right;
+}
+.newAddressSubmitButton{
+  width: 150px;
+  height: 50px;
+  font-size: 18px;
+  border: none;
+  border-radius: 20px;
+  background-color: #2ecc71;
+  cursor: pointer;
+}

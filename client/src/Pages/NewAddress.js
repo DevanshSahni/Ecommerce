@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../CSS/newAddress.css";
 
 const NewAddress = () => {
   const [location, setLocation] = useState("");
+  const navigate = useNavigate();
+  
   return (
     <div className="newAddress">
       <h1 className="newAddressHeading">Shipping Info</h1>
@@ -80,8 +82,8 @@ const NewAddress = () => {
         />
 
         <div className="newAddressFooter">
-        <button className="newAddressSubmitButton" type="submit">
-          <Link to="/select-address">Save address</Link>
+        <button className="newAddressSubmitButton" type="submit" onClick={()=>navigate(-1)}>
+          Save address
         </button></div>
       </div>
     </div>

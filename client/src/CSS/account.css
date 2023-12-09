@@ -1,0 +1,140 @@
+.accountNavbar{
+  position: fixed;
+  top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0 50px;
+  width: 175px;
+  height: 60vh;
+  padding-bottom: 40vh;
+  background-color: #bdc3c7;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-align: left;
+}
+
+.accountSection{
+  margin: 100px;
+  margin-left: 350px;
+}
+.accountHeading{
+  color: #3498d8;
+  border-bottom: 2px solid #33333332;
+  padding-bottom: 30px;
+  margin-bottom: 50px;
+}
+
+
+/* Profile */
+.profileDetails{
+  margin-bottom: 50px;
+}
+
+.userInfo{
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+.userInfo input{
+  border: none;
+  font-size: 18px;
+  width: 400px;
+  background-color: #ecf0f1;
+  text-decoration: underline;
+  outline: none;
+}
+.userInfo input::-webkit-inner-spin-button, .userInfo input::-webkit-outer-spin-button{
+  display: none;
+}
+.userInfo input:disabled{
+  text-decoration: none;
+}
+
+.profileEditButton{
+  width: max-content;
+  padding: 15px 40px;
+  font-size: 18px;
+  border: none;
+  border-radius: 20px;
+  background-color: #2ecc71;
+  cursor: pointer;
+}
+
+
+/* My address */
+
+.accountAddressButton{
+  border: none;
+  background-color: transparent;
+  color: #3498d8;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.addressContainer{
+  background-color: #bdc3c7b4;
+  width: 80%;
+  min-height: 50px;
+  padding: 20px 10px;
+  margin: 30px auto;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.addressContainerHeading{
+  color: #3498d8;
+}
+.addressContainerContent{
+  padding: 0;
+  margin: 10px 20px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+.accountAddressFooter{
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  width: 80%;
+  align-items: center;
+  margin: 100px auto;
+}
+.accountAddressFooterAddButton{
+  width: 175px;
+  height: 50px;
+  font-size: 16px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #bdc3c7b4;
+}
+
+
+/* Settings */
+
+.settingsMenu{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.settingsMenuItem{
+  display: flex;
+  gap: 50px;
+}
+
+.settingsMenuHeading{
+  width: 400px;
+}
+
+.settingsMenuDescription{
+  font-weight: 500;
+  width: 400px;
+}
+
+.settingsMenuAction{
+  color: #3498d8;
+  cursor: pointer;
+  font-size: 18px;
+}

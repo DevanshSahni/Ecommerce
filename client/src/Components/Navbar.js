@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className='navbarLinks'>
         <Link to="/explore"><BsGrid3X3GapFill /></Link>
         <Link to="/cart"><FaShoppingCart/></Link>
-        <Link to=""><FaUser/></Link>
+        <Link to="/account/profile"><FaUser/></Link>
       </div>
     </div>
   )

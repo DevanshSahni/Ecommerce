@@ -1,0 +1,42 @@
+[
+  {
+    "name":"The Cat",
+    "price":599,
+    "artist":"Devansh Sahni",
+    "imageSrc":"https://drive.google.com/uc?export=view&id=1a52u-D5Ws3aMFnon3fXOVGxBk_VYGchF",
+    "quantity":2,
+    "imageDescription":"This is a sample description."
+  },
+  {
+    "name":"The distressed man",
+    "price":799,
+    "artist":"Devansh Sahni",
+    "imageSrc":"https://drive.google.com/uc?export=view&id=1XOricsddcECRcVv4reJacCorsHcV_t2k",
+    "quantity":3,
+    "imageDescription":"This is a sample description."
+  },
+  {
+    "name":"An Itch",
+    "price":499,
+    "artist":"Devansh Sahni",
+    "imageSrc":"https://drive.google.com/uc?export=view&id=1wj7Uyz8HrbgK3rjkhtR7pkGsgB_NZOx-",
+    "quantity":5,
+    "imageDescription":"This is a sample description."
+  },
+  {
+    "name":"The Indian Flag",
+    "price":999,
+    "artist":"Devansh Sahni",
+    "imageSrc":"https://drive.google.com/uc?export=view&id=19rmyN_P6pjy4RuNUpOKb2X6SWnazH1SM",
+    "quantity":1,
+    "imageDescription":"This is a sample description."
+  },
+  {
+    "name":"Innocence",
+    "price":799,
+    "artist":"Devansh Sahni",
+    "imageSrc":"https://drive.google.com/uc?export=view&id=1o3URdM0r-Dk8bG1fzB0Xwkpx4lkG_sTz",
+    "quantity":2,
+    "imageDescription":"This is a sample description."
+  }
+]

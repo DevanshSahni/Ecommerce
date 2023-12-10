@@ -1,0 +1,84 @@
+.loginContainer{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 700px;  
+}
+
+
+.loginHeading{
+  color: #3498d8;
+  width: 390px;
+  font-size: 48px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+}
+
+
+.loginForm{
+  height: 300px;
+  width: 350px;
+  background-color: #bdc3c7c4;
+  border-radius: 25px;
+  padding: 40px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 25px;
+  align-items: center;
+}
+
+.loginFormInput{
+  all: unset;
+  height: 30px;
+  width: 300px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #e6f5ff;
+}
+
+.loginFormFooter{
+  margin-top: 50px;
+  width: 320px;
+  display: flex;
+  justify-content: space-between;
+}
+.loginFormButton{
+  all: unset;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 18px;
+  background-color: #2ecc71;
+  cursor: pointer;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.SignupFormButton{
+  all: unset;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 18px;
+  background-color: #e6f5ff;
+  cursor: pointer;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.loginPhotographer{
+  width: 150px;
+  position: absolute;
+  top: 105px;
+  right: calc(50% - 170px);
+}
+.loginWaves{
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  z-index: -1;
+}

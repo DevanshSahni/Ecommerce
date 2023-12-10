@@ -6,6 +6,8 @@ import Navbar from "./Components/Navbar";
 import NewAddress from "./Pages/NewAddress";
 import SelectAddress from "./Pages/SelectAddress";
 import Account from "./Pages/Account";
+import Login from "./Pages/Login";
+import Signup from "./Pages/Signup";
 
 
 function App() {
@@ -14,6 +16,8 @@ function App() {
     <Navbar/>
     <Routes >
       <Route path="/" element={<Explore/>} />
+      <Route path="/login" element={<Login/>} />
+      <Route path="/signup" element={<Signup/>} />
       <Route path="/explore" element={<Explore/>} />
       <Route path="/cart" element={<Cart/>} />
       <Route path="/product/:productID" element={<Product/>} />

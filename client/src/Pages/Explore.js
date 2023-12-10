@@ -1,15 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../CSS/explore.css";
-import originalData from "../data.json";
+// import originalData from "../data.json";
 import Preview from "../Components/Preview";
 import { BsThreeDotsVertical, BsSearch } from "react-icons/bs";
 import { FaSortAmountUpAlt, FaStar, FaSortAmountUp } from "react-icons/fa";
 
 const Explore = () => {
   const [open, setOpen] = useState(false);
-  const [data, setData] = useState([...originalData]);
+  const [data, setData] = useState([]);
+  const [originalData, setOriginalData] = useState([]);
   const [query, setQuery] = useState("");
 
+  useEffect(()=>{
+    const getData = async()=>{
+      const response= await fetch("http://localhost:3001/data",{
+        method:"GET",
+        credentials:"include"
+      })
+      const products=await response.json();
+      setOriginalData(await products);
+      setData(await products);
+    }
+    
+
+    getData();
+  },[])
   const inc = () => {
     data.sort((a, b) => a.price - b.price);
     setOpen(!open);

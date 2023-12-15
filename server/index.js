@@ -1,8 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const data = require("./data.json");
+const mongoose = require("mongoose");
+const routes = require("./routes/routes");
+require('dotenv').config();
 
+app.use(express.json());
 app.use(
   cors({
     origin: true,
@@ -10,9 +13,11 @@ app.use(
   })
 );
 
-app.get("/data", (req, res) => {
-  res.send(data);
-});
+mongoose.connect(
+  `mongodb+srv://${process.env.DATABASE_USERNAME}:${process.env.DATABASE_PASSWORD}@cluster0.152cqw3.mongodb.net/ecommerce`
+);
+
+app.use("/", routes);
 
 app.listen(3001, (req, res) => {
   console.log("Port is working");

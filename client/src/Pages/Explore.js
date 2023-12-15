@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "../CSS/explore.css";
-// import originalData from "../data.json";
 import Preview from "../Components/Preview";
 import { BsThreeDotsVertical, BsSearch } from "react-icons/bs";
 import { FaSortAmountUpAlt, FaStar, FaSortAmountUp } from "react-icons/fa";
@@ -11,20 +10,19 @@ const Explore = () => {
   const [originalData, setOriginalData] = useState([]);
   const [query, setQuery] = useState("");
 
-  useEffect(()=>{
-    const getData = async()=>{
-      const response= await fetch("http://localhost:3001/data",{
-        method:"GET",
-        credentials:"include"
-      })
-      const products=await response.json();
+  useEffect(() => {
+    const getData = async () => {
+      const response = await fetch("http://localhost:3001/products", {
+        method: "GET",
+        credentials: "include",
+      });
+      const products = await response.json();
       setOriginalData(await products);
       setData(await products);
-    }
-    
+    };
 
     getData();
-  },[])
+  }, []);
   const inc = () => {
     data.sort((a, b) => a.price - b.price);
     setOpen(!open);
@@ -83,7 +81,7 @@ const Explore = () => {
             name={product.name}
             price={product.price}
             artist={product.artist}
-            image={product.imageSrc}
+            image={product.photourl}
           />
         ))}
       </div>

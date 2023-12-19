@@ -1,10 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { getData, postData } from "../Utils/api";
 
 const Profile = () => {
-  const [name, setName] = useState("Devansh");
-  const [email, setEmail] = useState("devanshsahni123@gmail.com");
-  const [phone, setPhone] = useState(8744810467);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState(0);
   const [edit, setEdit] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const getInfo = async () => {
+      const { data, status } = await getData("userInformation");
+      if (status === 401) {
+        navigate("/login");
+      }
+      setName(data.name);
+      setEmail(data.email);
+      setPhone(data.number);
+    };
+    getInfo();
+  }, []);
+
+  const handleEdit = async () => {
+    if (edit) {
+      const { status } = await postData("updateUser", {
+        name,
+        email,
+        number: phone,
+      });
+      if (status === 401) {
+        navigate("/login");
+      }
+    }
+    setEdit(!edit);
+  };
 
   return (
     <div className="accountSection">
@@ -37,17 +67,15 @@ const Profile = () => {
           <input
             type="Number"
             value={phone}
-            onChange={(e) => {
-              setPhone(e.target.value);
-            }}
-            minLength={10}
-            maxLength={10}
+            onChange={(e) =>
+              e.target.value.length <= 10 ? setPhone(e.target.value) : null
+            }
             disabled={!edit}
           />
         </div>
       </div>
 
-      <button className="profileEditButton" onClick={() => setEdit(!edit)}>
+      <button className="profileEditButton" onClick={() => handleEdit()}>
         {edit ? "Save" : "Edit"}
       </button>
     </div>

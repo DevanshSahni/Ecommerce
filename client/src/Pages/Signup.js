@@ -3,6 +3,7 @@ import waves from "../Assets/waves.png";
 import "../CSS/signup.css";
 import { Link, useNavigate } from "react-router-dom";
 import painter from "../Assets/Artist.png";
+import { postData } from "../Utils/api";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -14,22 +15,14 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:3001/signup", {
-      method: "POST",
-      credentials: "include",
-      body: JSON.stringify({
-        name,
-        email,
-        password,
-        number,
-      }),
-      headers: {
-        "Content-type": "application/json",
-      },
+    const { data, status } = await postData("signup", {
+      name,
+      email,
+      password,
+      number,
     });
 
-    const data = await response.json();
-    if (response.ok) navigate("/explore");
+    if (status === 200) navigate("/explore");
     else alert(data.message);
   };
 

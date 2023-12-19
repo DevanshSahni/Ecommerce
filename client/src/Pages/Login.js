@@ -3,35 +3,23 @@ import { Link, useNavigate } from "react-router-dom";
 import "../CSS/login.css";
 import photographer from "../Assets/Photographer.png";
 import waves from "../Assets/waves.png";
+import { postData } from "../Utils/api";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
-  const handleSubmit = async(e) =>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const response = await fetch("http://localhost:3001/login", { 
-      method:"POST",
-      credentials:"include",
-      body: JSON.stringify({
-        email, 
-        password
-      }),
-      headers:{
-        "Content-type":"application/json",
-      }
-    })
-
-    const data= await response.json();
-    if(response.status==200){
+    const { data, status } = await postData("login", { email, password });
+    
+    if (status === 200) {
       navigate("/explore");
-    }
-    else{
+    } else {
       alert(data.message);
     }
-  }
+  };
   return (
     <div className="loginContainer">
       <h1 className="loginHeading">Login</h1>

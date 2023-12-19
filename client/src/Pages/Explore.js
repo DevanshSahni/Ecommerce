@@ -3,6 +3,7 @@ import "../CSS/explore.css";
 import Preview from "../Components/Preview";
 import { BsThreeDotsVertical, BsSearch } from "react-icons/bs";
 import { FaSortAmountUpAlt, FaStar, FaSortAmountUp } from "react-icons/fa";
+import { getData } from "../Utils/api";
 
 const Explore = () => {
   const [open, setOpen] = useState(false);
@@ -11,26 +12,24 @@ const Explore = () => {
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    const getData = async () => {
-      const response = await fetch("http://localhost:3001/products", {
-        method: "GET",
-        credentials: "include",
-      });
-      const products = await response.json();
-      setOriginalData(await products);
-      setData(await products);
+    const getProducts = async () => {
+      const { data } = await getData("products");
+      setOriginalData([...data]);
+      setData([...data]);
     };
-
-    getData();
+    getProducts();
   }, []);
+
   const inc = () => {
     data.sort((a, b) => a.price - b.price);
     setOpen(!open);
   };
+
   const dec = () => {
     data.sort((b, a) => a.price - b.price);
     setOpen(!open);
   };
+
   const pop = () => {
     setData([...originalData]);
     setOpen(!open);

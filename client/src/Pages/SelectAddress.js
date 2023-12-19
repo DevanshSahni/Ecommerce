@@ -1,28 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../CSS/selectAddress.css";
 import { Link } from "react-router-dom";
+import { getData } from "../Utils/api";
 
 const SelectAddress = () => {
   const [selected, setSelected] = useState(-1);
+  const [addressBook, setAddressBook] = useState([]);
 
-  const addressBook = [
-    {
-      name: "Home",
-      street: "Mahavir Nagar",
-      city: "Delhi",
-      state: "New Delhi",
-      country: "India",
-      postalCode: 110018,
-    },
-    {
-      name: "Office",
-      street: "Cyber city",
-      city: "Gurgram",
-      state: "Haryana",
-      country: "India",
-      postalCode: 110057,
-    },
-  ];
+  useEffect(() => {
+    const getAddress = async () => {
+      const { data, status } = await getData("userAddresses");
+      setAddressBook(data.addressess);
+    };
+    getAddress();
+  }, []);
+
+  const handleSubmit = async()=>{
+    // Place the order
+  }
 
   return (
     <div className="selectAddress">
@@ -31,6 +26,7 @@ const SelectAddress = () => {
       {addressBook.map((address, idx) => {
         return (
           <AddressContainer
+            key={address._id}
             idx={idx}
             setSelected={setSelected}
             selected={selected}
@@ -51,7 +47,12 @@ const SelectAddress = () => {
           </button>
         </Link>
         <Link to="/explore">
-          <button className="selectAddressFooterProceedButton" type="submit" disabled={selected==-1}>
+          <button
+            className="selectAddressFooterProceedButton"
+            type="submit"
+            disabled={selected == -1}
+            onClick={handleSubmit()}
+          >
             Proceed
           </button>
         </Link>
@@ -73,7 +74,6 @@ const AddressContainer = ({
   Country,
   street,
 }) => {
-  console.log(idx);
   return (
     <div
       className="addressContainer"

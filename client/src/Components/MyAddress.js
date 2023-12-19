@@ -1,25 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { getData, postData } from "../Utils/api";
 
 const MyAddress = () => {
-  const addressBook = [
-    {
-      name: "Home",
-      street: "Mahavir Nagar",
-      city: "Delhi",
-      state: "New Delhi",
-      country: "India",
-      postalCode: 110018,
-    },
-    {
-      name: "Office",
-      street: "Cyber city",
-      city: "Gurgram",
-      state: "Haryana",
-      country: "India",
-      postalCode: 110057,
-    },
-  ];
+  const [addressBook, setAddressBook] = useState([]);
+
+  useEffect(() => {
+    const getAddress = async () => {
+      const { data, status } = await getData("userAddresses");
+      setAddressBook(data.addressess);
+    };
+    getAddress();
+  }, []);
 
   return (
     <div className="accountSection">
@@ -28,50 +20,49 @@ const MyAddress = () => {
       {addressBook.map((address, idx) => {
         return (
           <AddressContainer
+            key={address._id}
             idx={idx}
-            name={address.name}
-            street={address.street}
-            city={address.city}
-            state={address.state}
-            country={address.country}
-            postalCode={address.postalCode}
+            setAddressBook={setAddressBook}
+            address={address}
           />
         );
       })}
       <div className="accountAddressFooter">
-      <Link to="/new-address">
-        <button className="accountAddressFooterAddButton" type="submit">
-          Add new address
-        </button>
-      </Link>
+        <Link to="/new-address">
+          <button className="accountAddressFooterAddButton" type="submit">
+            Add new address
+          </button>
+        </Link>
       </div>
     </div>
   );
 };
 
-const AddressContainer = ({
-  idx,
-  name,
-  state,
-  city,
-  postalCode,
-  Country,
-  street,
-}) => {
+const AddressContainer = ({ idx, setAddressBook, address }) => {
+  const handleDelete = async (id) => {
+    const { data, status } = await postData("deleteAddress", { id });
+    if (status === 200) {
+      setAddressBook(data.newAddress);
+    }
+  };
+
   return (
     <div className="addressContainer">
       <h3 className="addressContainerHeading">
-        ({idx + 1}) {name.toUpperCase()}:{" "}
+        ({idx + 1}) {address.name.toUpperCase()}{" "}
       </h3>
       <h4 className="addressContainerContent">
-        {street}, {city}, {state}, {postalCode}{" "}
+        {address.street}, {address.city}, {address.state}, {address.postalCode}{" "}
       </h4>
       <h4 className="addressContainerContent">
-        <button className="accountAddressButton" onClick={() => {}}>
-          Edit
-        </button>{" "}
+        <Link to="/new-address" state={address}>
+          <button className="accountAddressButton">Edit</button>
+        </Link>{" "}
         |{" "}
-        <button className="accountAddressButton" onClick={() => {}}>
+        <button
+          className="accountAddressButton"
+          onClick={() => handleDelete(address._id)}
+        >
           Delete
         </button>
       </h4>

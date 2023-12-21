@@ -20,7 +20,6 @@ module.exports.userAddresses = async (req, res) => {
 
 module.exports.saveUserAddress = async (req, res) => {
   const userID = req.user.id;
-  console.log(req.body._id);
   const user = await userModel.findOne({ _id: userID }, { addressess: 1 });
   let newAddress;
   if (user.addressess) {
@@ -40,7 +39,6 @@ module.exports.saveUserAddress = async (req, res) => {
 
 module.exports.deleteAddress = async (req, res) => {
   const userID = req.user.id;
-  console.log(req.body.id);
   const user = await userModel.findOne({ _id: userID }, { addressess: 1 });
   let newAddress = user.addressess.filter(
     (address) => address._id.toString() !== req.body.id.toString()

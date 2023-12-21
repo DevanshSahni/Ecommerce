@@ -1,6 +1,8 @@
 const userModel = require("../models/userModel");
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 module.exports.Signup = async (req, res) => {
   const { email } = req.body;
@@ -11,6 +13,8 @@ module.exports.Signup = async (req, res) => {
     res.status(401).send({ message: "User already exists" });
     return;
   }
+
+  req.body.password = await bcrypt.hash(req.body.password, saltRounds);
 
   const user = new User(req.body);
   await user.save();
@@ -25,7 +29,10 @@ module.exports.Login = async (req, res) => {
 
   if (!user) {
     res.status(401).send({ message: "User not found" });
-  } else if (user.password === password) {
+    return;
+  }
+  const result = bcrypt.compare(password, user.password);
+  if (result) {
     const accessToken = jwt.sign({ id: user._id }, process.env.SECRET_KEY);
     res.cookie("jwt", accessToken, {
       withCredentials: true,
